@@ -129,3 +129,8 @@ table {
 }
 
 /* Estilos globais */
+
+body {
+  font-family: "Roboto Slab", serif;
+  font-size: 18px;
+}
