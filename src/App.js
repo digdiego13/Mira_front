@@ -10,7 +10,7 @@ import CheckoutPage from "./components/CheckoutPage";
 import GalleryPage from "./components/GalleryPage";
 import SignInPage from "./components/SignInPage";
 import SignUpPage from "./components/SignUpPage";
-
+fefg
 
 function App() {
 
