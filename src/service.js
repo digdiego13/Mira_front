@@ -1,9 +1,9 @@
 import axios from "axios";
 const URL = "https://git.heroku.com/mirabackend.git";
 
-const createHeaders = (token) => {
-  return { headers: { Authorization: `Bearer ${token}` } };
-};
+// const createHeaders = (token) => {
+//   return { headers: { Authorization: `Bearer ${token}` } };
+// };
 
 function postLogin(body) {
   const promise = axios.post(`${URL}/sign-in`, body);
