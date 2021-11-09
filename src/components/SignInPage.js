@@ -37,7 +37,7 @@ export default function SignInPage() {
       })
       .catch((err) => {
         setIsLoading(false);
-        if (err.response.status === 500) {
+        if (err?.response.status === 500) {
           alert("Erro de servidor");
         } else if (err.response.status === 403) {
           alert("E-mail/senha incorretos");
