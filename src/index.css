@@ -133,4 +133,6 @@ table {
 body {
   font-family: "Roboto Slab", serif;
   font-size: 18px;
+  background-color: black;
+  color: #e5e5e5;
 }
