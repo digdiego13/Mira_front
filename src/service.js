@@ -1,9 +1,9 @@
 import axios from "axios";
-const URL = "https://git.heroku.com/mirabackend.git";
-
-// const createHeaders = (token) => {
-//   return { headers: { Authorization: `Bearer ${token}` } };
-// };
+const URL = "http://localhost:4000";
+//https://mirabackend.herokuapp.com
+const createHeaders = (token) => {
+   return { headers: { Authorization: `Bearer ${token}` } };
+ };
 
 function postLogin(body) {
   const promise = axios.post(`${URL}/sign-in`, body);
@@ -15,4 +15,9 @@ function postSignUp(body) {
   return promise;
 }
 
-export { postLogin, postSignUp };
+function getCartList (token){
+  const promise = axios.get(`${URL}/cart`, createHeaders(token));
+  return promise;
+}
+
+export { postLogin, postSignUp, getCartList };
