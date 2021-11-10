@@ -2,7 +2,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import UserContext from "./contexts/UserContext";
 import { useState } from 'react';
-import MainPage from './components/MainPage';
+import MainPage from './components/MainPage/MainPage';
 import ArtistPage from "./components/ArtistPage";
 import ArtPage from "./components/ArtPage";
 import CartPage from "./components/CartPage";

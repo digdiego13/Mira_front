@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { useState} from 'react';
+import { useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { Link } from "react-router-dom";
-import {DebounceInput} from 'react-debounce-input';
+import { DebounceInput } from 'react-debounce-input';
 import { getRequisition } from '../../service';
 
 export default function SearchDesktop() {
@@ -22,7 +22,6 @@ export default function SearchDesktop() {
             });
         }                               
     } 
-
         
     return (
         <>
@@ -32,7 +31,7 @@ export default function SearchDesktop() {
                 minLength={3}
                 debounceTimeout={300}
                 type="text" 
-                placeholder="Search for arts, galleries and artists"
+                placeholder="Search for galleries . . ."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)} 
                 onInput={searchRequire()}/>
@@ -43,13 +42,11 @@ export default function SearchDesktop() {
                 </BlockStyled>
                 {/* <BlockStyled onClick={clean}>
                    {found && search !== ""  ? 
-                        (found.map((u) => {
+                        (found.map((gallery) => {
                             return(
-                                <Link to={`/user/${u.id}`} style={{textDecoration: 'none'}}> 
+                                <Link to={`/gallery}`} style={{textDecoration: 'none'}}> 
                                     <ResultsStyled>
-                                        <ImageStyled src={u.avatar} />   
-                                        <UsernameStyled> {u.username} </UsernameStyled> 
-                                        <UserStatusStyled> {u.isFollowingLoggedUser === true ? ("• following") : null} </UserStatusStyled>                                        
+                                        <GalleryNameStyled> {gallery.gallery_name} </GalleryNameStyled>                                       
                                     </ResultsStyled>
                                 </Link>    
                             )
@@ -116,19 +113,7 @@ const ResultsStyled = styled.div `
     line-height: 23px;
 `;
 
-const UserStatusStyled = styled.p`    
-    color: #C5C5C5;
-    margin: 20px 10px 0 2px;
-`;
-
-const ImageStyled = styled.img`
-    width: 39px;
-    height: 39px;
-    margin: 10px;
-    border-radius: 26.5px;
-`;
-
-const UsernameStyled = styled.p`
+const GalleryNameStyled = styled.p`
     margin: 20px 10px 0 2px;
     color: #515151;
     width: 40%;

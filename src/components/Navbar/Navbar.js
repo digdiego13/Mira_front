@@ -60,7 +60,7 @@ const HeaderStyled = styled.header`
     top: 0px;
     left: 0px;
     z-index: 1;
-    justify-content: space-between; 
+    justify-content: space-between;
 `;
 const CartIcon = styled(AiOutlineShoppingCart)`
     color: #000000;    
