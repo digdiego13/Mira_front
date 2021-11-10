@@ -20,4 +20,9 @@ function getCartList (token){
   return promise;
 }
 
-export { postLogin, postSignUp, getCartList };
+function postCancelItem (token, id){
+  const promise = axios.post(`${URL}/cart`,id, createHeaders(token));
+  return promise;
+}
+
+export { postLogin, postSignUp, getCartList, postCancelItem };

@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import UserContext from "../contexts/UserContext";
-import { postLogin } from "../service";
 import styled from "styled-components";
 import { BsCart4 } from "react-icons/bs";
 import ProductListComponent from "../shared/sharedComponents/ProductListComponent";
@@ -19,6 +18,7 @@ export default function CartPage() {
         getCartList(user.token)
         .then((res)=> {
             setCartList(res.data);
+            console.log('carr')
         })
         .catch((err)=> {
             history.push('/');
@@ -60,7 +60,7 @@ export default function CartPage() {
         </TableTitleStyle>
         <ProductListStyle>
             {cartList.map((cartItem) => {
-                return <ProductListComponent cartItem={cartItem}></ProductListComponent>
+                return <ProductListComponent cartItem={cartItem} loadCartList={loadCartList}></ProductListComponent>
             })}
         </ProductListStyle>
       </TableStyle>

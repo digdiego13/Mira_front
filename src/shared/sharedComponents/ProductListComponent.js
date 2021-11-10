@@ -1,10 +1,31 @@
 import styled from "styled-components";
+import { postCancelItem } from "../../service";
+import UserContext from "../../contexts/UserContext";
+import { useContext } from "react";
 
-export default function ProductListComponent({cartItem}) {
+export default function ProductListComponent({cartItem, loadCartList}) {
+
+    const { user } = useContext(UserContext);
+
+    function cancelItem () {
+
+        const body = {
+            id: cartItem.id
+        }
+
+        postCancelItem(user.token, body)
+        .then((res) => {
+            loadCartList()
+           console.log(cartItem.id)
+        })
+        .catch((err) => {
+            alert('Algo deu errado')
+        })
+    }
 
   return (
     <ProductList>
-      <ImageStyle src={String(cartItem.art_photo)} alt={"Art photo"}></ImageStyle>
+      <ImageStyle src={String(cartItem.art_photo)} alt={"Art photo"}></ImageStyle>  
       <div>
           <ArtNameStyle>{cartItem.art_name}</ArtNameStyle>
           <p>{cartItem.artist_name}</p>
@@ -14,7 +35,7 @@ export default function ProductListComponent({cartItem}) {
           <QuantityStyle>{`Price :  ${cartItem.price}`}</QuantityStyle>
           <p>{`$ ${Number(cartItem.price * cartItem.carrier_quantity).toFixed(2)}`}</p>
       </ValueStyle>
-      <CancelButton>
+      <CancelButton onClick={cancelItem}>
           Cancel
       </CancelButton>
     </ProductList>
