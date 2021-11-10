@@ -1,49 +1,47 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import UserContext from "../contexts/UserContext";
 import styled from "styled-components";
 import { BsCart4 } from "react-icons/bs";
 import ProductListComponent from "../shared/sharedComponents/ProductListComponent";
-import { TiArrowBackOutline } from "react-icons/ti";
 import { getCartList } from "../service";
+import ButtonBuyComponent from "../shared/sharedComponents/ButtonBuyComponent";
+import BackButtonComponent from "../shared/sharedComponents/BackButtonComponent";
 
 export default function CartPage() {
+  const [cartList, setCartList] = useState([1]);
+  const { user } = useContext(UserContext);
+  const history = useHistory();
 
-    const [cartList, setCartList] = useState([1]);
-    const {user} = useContext(UserContext);
-    const history = useHistory();
+  function loadCartList() {
+    getCartList(user.token)
+      .then((res) => {
+        setCartList(res.data);
+      })
+      .catch((err) => {
+        alert(err.response.data);
+        history.push("/");
+       
+      });
+  }
 
-    function loadCartList() {
+  useEffect(() => {
+    loadCartList();
+  }, []);
 
-        getCartList(user.token)
-        .then((res)=> {
-            setCartList(res.data);
-            console.log('carr')
-        })
-        .catch((err)=> {
-            history.push('/');
-            alert(err.response.data);
-        })
-    }
-    
-    useEffect(()=> {
-        loadCartList()
-    }, []);
+  if (cartList[0] === 1) {
+    return <p>Loading</p>;
+  }
 
-    if(cartList[0] ===1) {
-        return <p>Loading</p>
-    }
+  function calculateTotal() {
+    let total = 0;
+    cartList.forEach((item) => {
+      let artValue = item.price * item.carrier_quantity;
+      total += artValue;
+    });
 
-    function calculateTotal() {
-        let total = 0;
-        cartList.forEach((item)=> {
-            let artValue = item.price * item.carrier_quantity;
-            total += artValue;
-        })
-
-        return total;
-    }
-
+    return total;
+  }
 
   return (
     <Container>
@@ -59,22 +57,27 @@ export default function CartPage() {
           <h2></h2>
         </TableTitleStyle>
         <ProductListStyle>
-            {cartList.map((cartItem) => {
-                return <ProductListComponent cartItem={cartItem} loadCartList={loadCartList}></ProductListComponent>
-            })}
+          {cartList.length>0? cartList.map((cartItem) => {
+            return (
+              <ProductListComponent
+                key={cartItem.id}
+                cartItem={cartItem}
+                loadCartList={loadCartList}
+              ></ProductListComponent>
+            );
+          }): <p>You dont have Any Arts In your Cart</p>}
         </ProductListStyle>
       </TableStyle>
-      <TotalStyle>
-          <p>{`Total:   ${calculateTotal().toFixed(2)}`}</p>
-          <CheckoutStyle>Buy Now</CheckoutStyle>
+      {cartList.length>0? <TotalStyle>
+        <p>{`Total:   ${calculateTotal().toFixed(2)}`}</p>
+        <ButtonBuyComponent></ButtonBuyComponent>
       </TotalStyle>
-      <div>
-      <ReturnStyle to={'/'}>
-          <TiArrowBackOutline></TiArrowBackOutline>
-          Find more Arts!
-      </ReturnStyle>
-      </div>
+      :
+      ''}
       
+      <div>
+        <BackButtonComponent text={"Find more Arts!"}></BackButtonComponent>
+      </div>
     </Container>
   );
 }
@@ -86,8 +89,6 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
- 
 `;
 
 const CartIcon = styled(BsCart4)`
@@ -119,42 +120,9 @@ const TableTitleStyle = styled.div`
 const ProductListStyle = styled.ul``;
 
 const TotalStyle = styled.div`
-    margin-top: 100px;
-    font-size: 25px;
-    display:flex;
-    justify-content:space-between;
-    width:100%;
-`
-const CheckoutStyle = styled.button`
-    border-radius:5px;
-    background-color: #DB6D71;
-    height: 60px;
-    padding:10px 30px;
-    font-size: 25px;
-    text-decoration:none;
-    border: none;
-    font-weight:700;
-    margin-bottom: 40px;
-
-    &:hover {
-    cursor: pointer;
-    filter: brightness(0.8);
-  }
-`
-
-const ReturnStyle = styled(Link)`
-    background-color: white;
-    border-radius:40px;
-    padding:5px 15px;
-    font-size: 15px;
-    text-decoration:none;
-    border: none;
-    font-weight:700;
-    color: #DB6D71;
-
-    &:hover {
-    cursor: pointer;
-    filter: brightness(0.8);
-  }
-    
-`
+  margin-top: 100px;
+  font-size: 25px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+`;
