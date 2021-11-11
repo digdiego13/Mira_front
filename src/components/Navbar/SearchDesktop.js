@@ -19,7 +19,7 @@ export default function SearchDesktop() {
                 setFound(res.data)                               
             }) 
             .catch((res) => {     
-            alert("alguma mensagem de erro")                                
+            alert("Problemas no servidor")                                
             });
         }                               
     } 

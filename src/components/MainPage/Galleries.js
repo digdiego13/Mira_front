@@ -31,7 +31,7 @@ const [galleriesFound, setGalleriesFound] = useState("")
                         )
                     }))
                     :
-                    <OneGallery> colocar um loading </OneGallery>
+                    ""
                 }                
             </AllGalleries>
         </>

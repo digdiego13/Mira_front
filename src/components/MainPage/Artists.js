@@ -28,7 +28,7 @@ export default function Artists() {
                         return (                            
                             <Link to={`/artist`} style={{ textDecoration: 'none' }}>
                                 <OneArtist> 
-                                    <img src = {artist.photo} />
+                                    <img src = {artist.photo} alt = "foto de um artista" />
                                     {artist.artist_name} 
                                     </OneArtist>
 
@@ -36,7 +36,7 @@ export default function Artists() {
                         )
                     }))
                     :
-                    <OneArtist> colocar um loading </OneArtist>
+                    ""
                 }           
             </AllArtists>
         </>

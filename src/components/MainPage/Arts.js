@@ -26,12 +26,12 @@ export default function Arts() {
                     (artsFound.map((art) => {
                         return (                            
                             <Link to={`/art`} style={{ textDecoration: 'none' }}>
-                                <OneArt> <img src = {art.art_photo} /> </OneArt>
+                                <OneArt> <img src = {art.art_photo} alt = "imagem de uma obra de arte" /> </OneArt>
                             </Link>                            
                         )
                     }))
                     :
-                    <OneArt> colocar um loading </OneArt>
+                    ""
                 }
             </AllArtists>
         </>
