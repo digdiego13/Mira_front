@@ -2,7 +2,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import UserContext from "./contexts/UserContext";
 import { useState } from 'react';
-import MainPage from './components/MainPage';
+import MainPage from './components/MainPage/MainPage';
 import ArtistPage from "./components/ArtistPage";
 import ArtPage from "./components/ArtPage";
 import CartPage from "./components/CartPage";
@@ -10,6 +10,7 @@ import CheckoutPage from "./components/CheckoutPage";
 import GalleryPage from "./components/GalleryPage";
 import SignInPage from "./components/SignInPage";
 import SignUpPage from "./components/SignUpPage";
+import Navbar from "./components/Navbar/Navbar"
 
 
 function App() {
@@ -21,8 +22,10 @@ function App() {
     <UserContext.Provider value={{user, setUser}}>
       <BrowserRouter>
         <Switch>
+
           <Route path="/" exact>
             <MainPage />
+            <Navbar />
           </Route>
 
           <Route path="/sign-up" exact>
@@ -35,22 +38,27 @@ function App() {
 
           <Route path="/artist" exact>
             <ArtistPage />
+            <Navbar />
           </Route>
 
           <Route path="/gallery" exact>
             <GalleryPage />
+            <Navbar />
           </Route>
 
           <Route path="/art" exact>
             <ArtPage />
+            <Navbar />
           </Route>
 
           <Route path="/cart" exact>
             <CartPage />
+            <Navbar />
           </Route>
 
           <Route path="/checkout" exact>
             <CheckoutPage />
+            <Navbar />
           </Route>
         </Switch>
       </BrowserRouter>
