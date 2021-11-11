@@ -21,7 +21,6 @@ export default function ButtonBuyComponent() {
         if(err.response.status === 405) {
             setCheckoutList([]);
             setOutOfStock(true)
-
         }
         
       });

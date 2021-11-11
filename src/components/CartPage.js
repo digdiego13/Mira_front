@@ -13,7 +13,15 @@ export default function CartPage() {
   const { user } = useContext(UserContext);
   const history = useHistory();
 
+  
+
   function loadCartList() {
+    if(!user) {
+      alert("Please, Log-in to acess cart");
+      history.push("/sign-in");
+      return '';
+    }
+
     getCartList(user.token)
       .then((res) => {
         setCartList(res.data);
