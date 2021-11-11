@@ -7,7 +7,7 @@ import { AiOutlineShoppingCart } from 'react-icons/ai';
 
 export default function Navbar() {
     
-     const history = useHistory();
+    const history = useHistory();
 
     function logoutRedirect(){      
             history.push("/sign-in")           

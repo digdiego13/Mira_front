@@ -13,6 +13,7 @@ export default function SearchDesktop() {
     function searchRequire(){    
 
         if(search !== ""){
+            console.log(search)
             getRequisition(search)
             .then((res) => {    
                 setFound(res.data)                               
@@ -37,16 +38,13 @@ export default function SearchDesktop() {
                 onInput={searchRequire()}/>
                 <Icon />                 
                 </RelativeStyled>
-                <BlockStyled>
-
-                </BlockStyled>
-                {/* <BlockStyled onClick={clean}>
+                <BlockStyled >
                    {found && search !== ""  ? 
                         (found.map((gallery) => {
                             return(
                                 <Link to={`/gallery}`} style={{textDecoration: 'none'}}> 
                                     <ResultsStyled>
-                                        <GalleryNameStyled> {gallery.gallery_name} </GalleryNameStyled>                                       
+                                        <GalleryNameStyled> {gallery.galery_name} </GalleryNameStyled>                                       
                                     </ResultsStyled>
                                 </Link>    
                             )
@@ -54,7 +52,7 @@ export default function SearchDesktop() {
                         : 
                         null
                     }
-                </BlockStyled>         */}
+                </BlockStyled>        
             </SearchandResultsStyled>
         </>          
     )
@@ -62,7 +60,7 @@ export default function SearchDesktop() {
 
 const BlockStyled = styled.div`
     border-radius: 8px;
-    background: #E7E7E7;
+    background: #000000;
     overflow-x: hidden;
     height: auto;
     width: 585px;
@@ -86,7 +84,7 @@ const BlockStyled = styled.div`
 `;
 
 const DebounceInputStyled = styled(DebounceInput) `
-    width: 300px;
+    width: 530px;
     height: 45px;
     background: #000000;
     border-color: #000000;
@@ -114,15 +112,16 @@ const ResultsStyled = styled.div `
 `;
 
 const GalleryNameStyled = styled.p`
-    margin: 20px 10px 0 2px;
-    color: #515151;
-    width: 40%;
+    margin: 10px 10px 5px 10px;
+    color: #E5E5E5;
+    width: 100%;
+    height: 30px;
     overflow: hidden;         
     text-overflow: ellipsis;
 `;
 
 const SearchandResultsStyled = styled.div `
-    @media(max-width: 1269px){
+    @media(max-width: 930px){
         display:none
     }
 `;
@@ -130,22 +129,21 @@ const SearchandResultsStyled = styled.div `
 const Icon = styled(AiOutlineSearch)`
     color: #DB6D71;    
     width: 35px;
-    height: 45px;
+    height: 47px;
     padding-right: 10px;
     background: #000000;
-    border-color: #E5E5E5;
     border-radius: 0 8px 8px 0;
     outline: 0;
     font-family: Lato;
     font-size: 19px;
     cursor: pointer;
-    margin-left: 540px;
 `;
 
 const RelativeStyled = styled.div `
     display: flex;
-    justify-content: center;
-    margin-top: 13px;    
-    border-radius: 8px;    
     background-color: #000000;
+    width: 580px;
+    align-items: center;
+    margin-top: 15px;
+    border-radius: 8px;
 `;

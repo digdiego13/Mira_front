@@ -55,7 +55,6 @@ const AllGalleries = styled.div`
     display: flex;
     align-items: center;
     overflow-x: scroll;
-
     
     &::-webkit-scrollbar {
     width: 10px;
