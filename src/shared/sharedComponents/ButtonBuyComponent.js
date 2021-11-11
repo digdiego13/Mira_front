@@ -31,6 +31,7 @@ export default function ButtonBuyComponent() {
     if(modalIsOpen){
         loadCheckoutList();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [modalIsOpen]);
 
 

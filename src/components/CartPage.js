@@ -55,7 +55,7 @@ export default function CartPage() {
           <h2>Products</h2>
           <h2>Description</h2>
           <h2>Value</h2>
-          <h2></h2>
+          <h2>-</h2>
         </TableTitleStyle>
         <ProductListStyle>
           {cartList.length>0? cartList.map((cartItem) => {
