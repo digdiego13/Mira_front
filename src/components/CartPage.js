@@ -27,6 +27,7 @@ export default function CartPage() {
 
   useEffect(() => {
     loadCartList();
+     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (cartList[0] === 1) {

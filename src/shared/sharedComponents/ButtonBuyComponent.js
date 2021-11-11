@@ -4,7 +4,6 @@ import { useState, useContext, useEffect } from "react";
 import BackButtonComponent from "./BackButtonComponent";
 import { getCheckoutList } from "../../service";
 import UserContext from "../../contexts/UserContext";
-import { useHistory } from "react-router";
 
 export default function ButtonBuyComponent() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
