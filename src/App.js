@@ -37,7 +37,7 @@ function App() {
             <ArtistPage />
           </Route>
 
-          <Route path="/gallery" exact>
+          <Route path="/gallery/idGallery" exact>
             <GalleryPage />
           </Route>
 

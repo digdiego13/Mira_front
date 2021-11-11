@@ -1,5 +1,5 @@
 import axios from "axios";
-const URL = "https://git.heroku.com/mirabackend.git";
+const URL = "https://localhost:4001";
 
 // const createHeaders = (token) => {
 //   return { headers: { Authorization: `Bearer ${token}` } };
@@ -15,4 +15,13 @@ function postSignUp(body) {
   return promise;
 }
 
-export { postLogin, postSignUp };
+function getOneGallery(param) {
+  const promise = axios.post(`${URL}/gallery/${param}`);
+  return promise;
+}
+
+export { 
+  postLogin,
+  postSignUp ,
+  getOneGallery,
+};
