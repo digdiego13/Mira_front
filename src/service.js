@@ -1,9 +1,10 @@
 import axios from "axios";
-const URL = "http://localhost:4001";
+const URL = "http://localhost:4000";
+//https://mirabackend.herokuapp.com
+const createHeaders = (token) => {
+  return { headers: { Authorization: `Bearer ${token}` } };
+};
 
-// const createHeaders = (token) => {
-//   return { headers: { Authorization: `Bearer ${token}` } };
-// };
 function postLogin(body) {
     const promise = axios.post(`${URL}/sign-in`, body);
     return promise;
@@ -24,6 +25,21 @@ function getArtists() {
     return promise
 }
 
+function getCartList(token) {
+  const promise = axios.get(`${URL}/cart`, createHeaders(token));
+  return promise;
+}
+
+function getCheckoutList(token) {
+  const promise = axios.get(`${URL}/checkout`, createHeaders(token));
+  return promise;
+}
+
+function postCancelItem(token, id) {
+  const promise = axios.post(`${URL}/cart`, id, createHeaders(token));
+  return promise;
+}
+
 function getArts() {
     const promise = axios.get(`${URL}/stock`)  
     return promise
@@ -41,4 +57,7 @@ export {
     getArtists,
     getArts,
     getGalleries,
+    getCartList,
+    postCancelItem,
+    getCheckoutList
 }
