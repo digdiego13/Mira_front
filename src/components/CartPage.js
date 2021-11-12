@@ -7,6 +7,7 @@ import ProductListComponent from "../shared/sharedComponents/ProductListComponen
 import { getCartList } from "../service";
 import ButtonBuyComponent from "../shared/sharedComponents/ButtonBuyComponent";
 import BackButtonComponent from "../shared/sharedComponents/BackButtonComponent";
+import PaymentComponent from "../shared/sharedComponents/PaymentComponent";
 
 export default function CartPage() {
   const [cartList, setCartList] = useState([1]);
@@ -79,7 +80,7 @@ export default function CartPage() {
       </TableStyle>
       {cartList.length>0? <TotalStyle>
         <p>{`Total:   ${calculateTotal().toFixed(2)}`}</p>
-        <ButtonBuyComponent></ButtonBuyComponent>
+        <PaymentComponent totalValue={calculateTotal().toFixed(2)}></PaymentComponent>
       </TotalStyle>
       :
       ''}

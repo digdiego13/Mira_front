@@ -28,6 +28,7 @@ export default function SignInPage() {
         setUser({
           ...response.data,
         });
+        console.log(response.data)
         const serializedUser = JSON.stringify({
           ...response.data,
         });

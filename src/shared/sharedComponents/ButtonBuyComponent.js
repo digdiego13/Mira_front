@@ -4,13 +4,17 @@ import { useState, useContext, useEffect } from "react";
 import BackButtonComponent from "./BackButtonComponent";
 import { getCheckoutList } from "../../service";
 import UserContext from "../../contexts/UserContext";
+import {
+  CheckoutStyle,
+  ModalQueryStyle,
+  modalStyle,
+} from "../sharedStyles/sharedStyles";
 
-export default function ButtonBuyComponent() {
+export default function ButtonBuyComponent({disabled}) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [checkoutList, setCheckoutList] = useState([1]);
   const { user } = useContext(UserContext);
-  const [outOfStock, setOutOfStock] = useState(false)
-  
+  const [outOfStock, setOutOfStock] = useState(false);
 
   function loadCheckoutList() {
     getCheckoutList(user.token)
@@ -18,21 +22,19 @@ export default function ButtonBuyComponent() {
         setCheckoutList(res.data);
       })
       .catch((err) => {
-        if(err.response.status === 405) {
-            setCheckoutList([]);
-            setOutOfStock(true)
+        if (err.response.status === 405) {
+          setCheckoutList([]);
+          setOutOfStock(true);
         }
-        
       });
   }
 
   useEffect(() => {
-    if(modalIsOpen){
-        loadCheckoutList();
+    if (modalIsOpen) {
+      loadCheckoutList();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [modalIsOpen]);
-
 
   function calculateTotal() {
     let total = 0;
@@ -46,16 +48,17 @@ export default function ButtonBuyComponent() {
 
   return (
     <>
-      <CheckoutStyle onClick={() => setModalIsOpen(true)}>
-        Buy Now{" "}
-      </CheckoutStyle>
+      <CheckoutStyle onClick={() => setModalIsOpen(true)} disabled={disabled}>Buy! </CheckoutStyle>
       <ModalQueryStyle
         isOpen={modalIsOpen}
         style={modalStyle}
         ariaHideApp={false}
       >
-          {outOfStock? <h1>Unfotunatelly, we dont have all these arts on stock</h1> : <h1>Congrats, you just bought wonderful arts!</h1>}
-        
+        {outOfStock ? (
+          <h1>Unfotunatelly, we dont have all these arts on stock</h1>
+        ) : (
+          <h1>Congrats, you just bought wonderful arts!</h1>
+        )}
         <TableStyle>
           {checkoutList.map((checkoutItem) => {
             return (
@@ -87,49 +90,6 @@ export default function ButtonBuyComponent() {
   );
 }
 
-const CheckoutStyle = styled.button`
-  border-radius: 5px;
-  background-color: #db6d71;
-  height: 60px;
-  padding: 10px 30px;
-  font-size: 25px;
-  text-decoration: none;
-  border: none;
-  font-weight: 700;
-  margin-bottom: 40px;
-
-  &:hover {
-    cursor: pointer;
-    filter: brightness(0.8);
-  }
-`;
-
-const modalStyle = {
-  overlay: {
-    backgroundColor: "rgba(255, 255, 255, 0.5)",
-  },
-  content: {
-    border: "none",
-  },
-};
-
-const ModalQueryStyle = styled(ReactModal)`
-  width: 50%;
-  height: 70vh;
-  padding: 60px 100px;
-  margin: 20px auto;
-  background-color: #333333;
-  border: none;
-  border-radius: 50px;
-  font-size: 34px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  justify-content: space-between;
-  color: #db6d71;
-  outline: none;
-`;
 const ConfirmationTableStyle = styled.div`
   display: flex;
   width: 100%;

@@ -50,6 +50,11 @@ function getGalleries() {
     return promise
 }
 
+function checkStock(token) {
+  const promise = axios.get(`${URL}/checkstock`, createHeaders(token));
+  return promise;
+}
+
 export {
     postLogin,
     postSignUp,
@@ -59,5 +64,6 @@ export {
     getGalleries,
     getCartList,
     postCancelItem,
-    getCheckoutList
+    getCheckoutList,
+    checkStock
 }
