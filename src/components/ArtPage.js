@@ -3,10 +3,9 @@ import styled from 'styled-components';
 import { useEffect, useState, useContext } from 'react';
 import { getOneArt } from '../service';
 import Quantity from './Quantity';
-import QuantityContext from '../contexts/QuantityContext';
+import CartAdd from './CartAdd';
 
 export default function ArtPage() {
-    const { cont } = useContext(QuantityContext);
     const { idArt } = useParams();
     const [artFound, setArtFound] = useState("")
 
@@ -20,6 +19,7 @@ export default function ArtPage() {
             console.log(error)                                
         });                       
     } , []);
+
 
     return (  
         <>  
@@ -43,7 +43,7 @@ export default function ArtPage() {
                                     <div></div>                              
                                     <Quantity/>
                                     <div></div>
-                                    <CartAdd>Adicionar ao carrinho</CartAdd>
+                                    <CartAdd id={idArt} />
                                 </DescriptionBox>
                                 </BodyBox>        
                                 <ArtistBox>
@@ -126,16 +126,6 @@ const DescriptionBox = styled.div`
     }
 
 `;
-const CartAdd = styled.button`
-    background: #DB6D71;
-    border-color: #DB6D71;
-    border-radius: 8px;
-    width: 200px;
-    height: 50px;
-    font-size: 18px;
-    cursor: pointer;
-`;
-
 
 const BodyBox = styled.div`
     display: flex;

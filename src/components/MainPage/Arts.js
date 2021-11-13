@@ -26,7 +26,12 @@ export default function Arts() {
                     (artsFound.map((art) => {
                         return (                            
                             <Link to={`/art/${art.id}`} style={{ textDecoration: 'none' }}>
-                                <OneArt> <img src = {art.art_photo} alt = "imagem de uma obra de arte" /> </OneArt>
+                                <OneArt> 
+                                    <img src = {art.art_photo} alt = "imagem de uma obra de arte" />
+                                    <p> {art.art_name} </p>
+                                    <div> R$ {art.price},00 </div>
+                                    <button> mais detalhes </button>
+                                </OneArt>
                             </Link>                            
                         )
                     }))
@@ -44,6 +49,7 @@ const TitleStyled = styled.div`
     font-size: 25px;
 `;
 
+
 const AllArtists = styled.div`
     height: 300px;
     background: #E5E5E5;
@@ -54,6 +60,7 @@ const AllArtists = styled.div`
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    cursor: auto;
     overflow-y: scroll;
    
     &::-webkit-scrollbar {
@@ -74,7 +81,7 @@ const AllArtists = styled.div`
 
 const OneArt = styled.div`
     background-color: #000000;
-    font-size: 20px;
+    font-size: 15px;
     width: 200px;
     height: 200px;
     margin: 20px 40px;
@@ -83,12 +90,38 @@ const OneArt = styled.div`
     text-align: center;
     flex-shrink: 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    cursor: auto;
     img{
-        width: 150px;
-        height: 150px;
+        width: 120px;
+        height: 120px;
         border-radius: 5px;
+    }
+    div{
+        color: #E5E5E5;
+        width: 100px;
+        height: 10px;
+        background-color: #000000;
+        margin-top: 5px;
+        font-size: 12px;
+        margin-bottom: 5px;
+    }
+    button{
+        width: 100px;
+        height: 20px;
+        border-radius: 10px;
+        color: #E5E5E5;
+        border-color: #DB6D71;
+        background-color: #000000;
+        margin-top: 5px;
+        font-size: 12px;
+        cursor: pointer;
+    }
+    p{
+        height: 15px;
+        margin-top: 5px;
     }
 `;
 

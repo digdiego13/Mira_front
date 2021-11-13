@@ -45,6 +45,11 @@ function getOneArt(param) {
   return promise;
 }
 
+function postCart(body) {
+  const promise = axios.post(`${URL}/transaction`, body);
+  return promise;
+}
+
 export {
     postLogin,
     postSignUp,
@@ -54,4 +59,5 @@ export {
     getGalleries,
     getOneGallery,
     getOneArt,
+    postCart,
 }

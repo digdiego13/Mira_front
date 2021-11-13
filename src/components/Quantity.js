@@ -44,9 +44,9 @@ export default function Quantity() {
                             <>
                                 <Box>
                                     <h1>Quantidade: </h1> 
-                                    <button onClick={(event) => incrementQuantity(event) } className="plus">+</button>
+                                    <button onClick={() => incrementQuantity() } className="plus">+</button>
                                     <p>{cont}</p>
-                                    <button onClick={(event) => decrementQuantity(event)} className="minus">-</button>
+                                    <button onClick={() => decrementQuantity()} className="minus">-</button>
                                 </Box>
                             </>
                         )
