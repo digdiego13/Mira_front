@@ -5,7 +5,7 @@ import { getGalleries } from '../../service';
 
 export default function Galleries() {
 
-const [galleriesFound, setGalleriesFound] = useState("")
+    const [galleriesFound, setGalleriesFound] = useState("")
 
     useEffect(() => {
         getGalleries()
@@ -25,7 +25,7 @@ const [galleriesFound, setGalleriesFound] = useState("")
                 {galleriesFound !== "" ?
                     (galleriesFound.map((gallery) => {
                         return (                            
-                            <Link to={`/gallery`} style={{ textDecoration: 'none' }}>
+                            <Link to={`/gallery/${gallery.id}`} style={{ textDecoration: 'none' }}>
                                 <OneGallery> {gallery.galery_name} </OneGallery>
                             </Link>                            
                         )
@@ -51,7 +51,7 @@ const AllGalleries = styled.div`
     background: #E5E5E5;
     margin-bottom:50px;
     margin-left: 40px;
-
+    border-radius: 8px;    
     display: flex;
     align-items: center;
     overflow-x: scroll;
@@ -60,12 +60,10 @@ const AllGalleries = styled.div`
     width: 10px;
     height: 10px;
     }
-
     &::-webkit-scrollbar-track {
     background: #DB6D71;
     border-radius: 10px;
     }
-
     &::-webkit-scrollbar-thumb {
     background-color: #E5E5E5;
     border-radius: 10px;
@@ -86,4 +84,3 @@ const OneGallery = styled.p`
     text-align: center;
     flex-shrink: 0;
 `;
-

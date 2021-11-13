@@ -1,5 +1,5 @@
 import axios from "axios";
-const URL = "https://localhost:4001";
+const URL = "http://localhost:4001";
 
 // const createHeaders = (token) => {
 //   return { headers: { Authorization: `Bearer ${token}` } };
@@ -36,7 +36,12 @@ function getRequisition(search) {
 }
 
 function getOneGallery(param) {
-  const promise = axios.post(`${URL}/gallery/${param}`);
+  const promise = axios.get(`${URL}/gallery/${param}`);
+  return promise;
+}
+
+function getOneArt(param) {
+  const promise = axios.get(`${URL}/art/${param}`);
   return promise;
 }
 
@@ -48,4 +53,5 @@ export {
     getArts,
     getGalleries,
     getOneGallery,
+    getOneArt,
 }

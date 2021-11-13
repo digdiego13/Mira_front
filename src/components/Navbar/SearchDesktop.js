@@ -42,7 +42,7 @@ export default function SearchDesktop() {
                    {found && search !== ""  ? 
                         (found.map((gallery) => {
                             return(
-                                <Link to={`/gallery}`} style={{textDecoration: 'none'}}> 
+                                <Link to={`/gallery`} style={{textDecoration: 'none'}}> 
                                     <ResultsStyled>
                                         <GalleryNameStyled> {gallery.galery_name} </GalleryNameStyled>                                       
                                     </ResultsStyled>

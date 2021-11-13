@@ -20,12 +20,12 @@ export default function Arts() {
 
     return (
         <>
-            <TitleStyled>Clique na obra para saber mais</TitleStyled>
+            <TitleStyled>Para comprar ou saber mais, escolha uma arte:</TitleStyled>
             <AllArtists>
                 {artsFound !== "" ?
                     (artsFound.map((art) => {
                         return (                            
-                            <Link to={`/art`} style={{ textDecoration: 'none' }}>
+                            <Link to={`/art/${art.id}`} style={{ textDecoration: 'none' }}>
                                 <OneArt> <img src = {art.art_photo} alt = "imagem de uma obra de arte" /> </OneArt>
                             </Link>                            
                         )
@@ -40,20 +40,21 @@ export default function Arts() {
 const TitleStyled = styled.div`
     background: #000000;
     color: #E5E5E5;
-    margin-bottom: 5px;
-    margin-left: 40px;
+    margin: 50px 0 0 40px;
     font-size: 25px;
 `;
 
 const AllArtists = styled.div`
-    height: 160px;
+    height: 300px;
     background: #E5E5E5;
-    margin-bottom:50px;
-    margin-left: 40px;
-
+    margin: 10px 0 50px 40px;
+    border-radius: 8px;    
     display: flex;
     align-items: center;
-    overflow-x: scroll;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    overflow-y: scroll;
    
     &::-webkit-scrollbar {
     width: 10px;
@@ -68,15 +69,15 @@ const AllArtists = styled.div`
     &::-webkit-scrollbar-thumb {
     background-color: #E5E5E5;
     border-radius: 10px;
-    }
+    } 
 `;
 
 const OneArt = styled.div`
     background-color: #000000;
     font-size: 20px;
-    width: 140px;
-    height: 130px;
-    margin-left: 40px;
+    width: 200px;
+    height: 200px;
+    margin: 20px 40px;
     border-radius: 10px;
     color: #DB6D71;
     text-align: center;
@@ -85,8 +86,8 @@ const OneArt = styled.div`
     justify-content: center;
     align-items: center;
     img{
-        width: 110px;
-        height: 110px;
+        width: 150px;
+        height: 150px;
         border-radius: 5px;
     }
 `;
