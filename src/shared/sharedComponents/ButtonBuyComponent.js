@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import ReactModal from "react-modal";
 import { useState, useContext, useEffect } from "react";
 import BackButtonComponent from "./BackButtonComponent";
 import { getCheckoutList } from "../../service";

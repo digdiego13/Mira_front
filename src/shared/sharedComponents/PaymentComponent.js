@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { useState, useContext, useEffect } from "react";
-import BackButtonComponent from "./BackButtonComponent";
 import UserContext from "../../contexts/UserContext";
 import {
   CheckoutStyle,
@@ -24,12 +23,10 @@ export default function PaymentComponent({ totalValue }) {
     checkStock(user.token)
       .then((res) => {
         setOnStock(true);
-        console.log("deu 200");
       })
       .catch((err) => {
         if (err.response.status === 405) {
           setOnStock(false);
-          console.log("deu 405");
         } else if (err.response.status === 401) {
           alert("please, logg-in");
           history.push("/sign-in");
