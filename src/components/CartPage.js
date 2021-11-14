@@ -93,6 +93,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: 150px;
 `;
 
 const CartIcon = styled(BsCart4)`

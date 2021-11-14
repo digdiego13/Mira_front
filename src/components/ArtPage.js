@@ -21,7 +21,7 @@ export default function ArtPage() {
 
 
     return (  
-        <>  
+        <AllPage>  
             {artFound !== "" ? 
                     (artFound.map((art, index) => {
                         return (
@@ -56,9 +56,13 @@ export default function ArtPage() {
                 :
                 ""
             }                         
-        </>                    
+        </AllPage>                    
     )
 }
+
+const AllPage = styled.div`
+    padding-bottom: 10px;
+`;
 
 const TitleBox = styled.div`
     background: #E5E5E5;

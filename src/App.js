@@ -4,7 +4,6 @@ import UserContext from "./contexts/UserContext";
 import QuantityContext from "./contexts/QuantityContext";
 import { useState } from 'react';
 import MainPage from './components/MainPage/MainPage';
-import ArtistPage from "./components/ArtistPage";
 import ArtPage from "./components/ArtPage";
 import CartPage from "./components/CartPage";
 import CheckoutPage from "./components/CheckoutPage";
@@ -40,33 +39,24 @@ function App() {
             <SignInPage />
           </Route>
 
-          <Route path="/artist" exact>
-            <ArtistPage />
-            <Navbar />
-          </Route>
-
           <Route path="/gallery/:idGallery" exact>
             <GalleryPage />
             <Navbar />
-            <Footer />
           </Route>
 
           <Route path="/art/:idArt" exact>
             <ArtPage />
             <Navbar />
-            <Footer />
           </Route>
 
           <Route path="/cart" exact>
             <CartPage />
             <Navbar />
-            <Footer />
           </Route>
 
           <Route path="/checkout" exact>
             <CheckoutPage />
             <Navbar />
-            <Footer />
           </Route>
         </Switch>
       </BrowserRouter>

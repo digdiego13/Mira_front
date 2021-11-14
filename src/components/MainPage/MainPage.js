@@ -15,6 +15,7 @@ const All = styled.div`
     width: 100vw;
     height: calc(100vh - 20px);
     padding-top: 70px;
+    padding-bottom: 150px;
     background-color: #000000;
 `;
 

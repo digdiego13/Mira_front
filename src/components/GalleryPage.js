@@ -227,13 +227,13 @@ const OneArt = styled.div`
     h1{
         height: 15px;
     }
-`
-;
+`;
 
 const TopBox = styled.div`
     display: flex;
     justify-content: space-between;
 `;
+
 const BottomBox = styled.div`
     display: flex;
     flex-direction: column;
@@ -246,8 +246,10 @@ const BottomBox = styled.div`
       font-size: 23px;
     }
 `;
+
 const AllGalleryPage = styled.div`
     width: 1300px;
     margin: 0 auto;
     margin-top: 100px;
+    padding-bottom: 10px;
 `;

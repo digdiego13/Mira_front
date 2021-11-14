@@ -6,8 +6,7 @@ export default function Footer() {
 
     return (
         <> 
-            <HeaderStyled >  
-
+            <HeaderStyled > 
                 <div> 
                     Nossa Missão:
                     <p>“Reunir as galerias do Brasil inteiro em um só lugar <br/> e possibilitar o acesso de suas obras". </p>
@@ -30,7 +29,7 @@ export default function Footer() {
     )
 }
 
-const HeaderStyled = styled.header`
+const HeaderStyled = styled.div`
     width: 100vw;
     height: 150px;
     background: #000000;
