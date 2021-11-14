@@ -23,10 +23,10 @@ export default function ArtPage() {
     return (  
         <>  
             {artFound !== "" ? 
-                    (artFound.map((art) => {
+                    (artFound.map((art, index) => {
                         return (
-                            <>
-                                <TitleBox key={art.id}>
+                            <div key={index}>
+                                <TitleBox key={index}>
                                     <h1> Galeria: {art.galery_name}</h1> 
                                     <div></div>
                                     <h2> {art.art_name}</h2>
@@ -50,7 +50,7 @@ export default function ArtPage() {
                                     <div></div>
                                     <h2>{art.description}</h2>
                                 </ArtistBox>
-                            </>
+                            </div>
                         )
                     }))
                 :
