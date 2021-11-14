@@ -2,9 +2,9 @@ import styled from "styled-components";
 import { TiArrowBackOutline } from "react-icons/ti";
 import { Link } from "react-router-dom";
 
-export default function BackButtonComponent({ text }) {
+export default function BackButtonComponent({ text, route }) {
   return (
-    <ReturnStyle to={"/"}>
+    <ReturnStyle to={route? '/cart': '/'}>
       <TiArrowBackOutline></TiArrowBackOutline>
       {text}
     </ReturnStyle>

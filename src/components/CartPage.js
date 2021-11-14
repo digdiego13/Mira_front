@@ -5,15 +5,13 @@ import styled from "styled-components";
 import { BsCart4 } from "react-icons/bs";
 import ProductListComponent from "../shared/sharedComponents/ProductListComponent";
 import { getCartList } from "../service";
-import ButtonBuyComponent from "../shared/sharedComponents/ButtonBuyComponent";
 import BackButtonComponent from "../shared/sharedComponents/BackButtonComponent";
+import PaymentComponent from "../shared/sharedComponents/PaymentComponent";
 
 export default function CartPage() {
   const [cartList, setCartList] = useState([1]);
   const { user } = useContext(UserContext);
   const history = useHistory();
-
-  
 
   function loadCartList() {
     if(!user) {
@@ -21,7 +19,6 @@ export default function CartPage() {
       history.push("/sign-in");
       return '';
     }
-
     getCartList(user.token)
       .then((res) => {
         setCartList(res.data);
@@ -32,7 +29,6 @@ export default function CartPage() {
        
       });
   }
-
   useEffect(() => {
     loadCartList();
      // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -51,7 +47,6 @@ export default function CartPage() {
 
     return total;
   }
-
   return (
     <Container>
       <CartStyle>
@@ -65,7 +60,7 @@ export default function CartPage() {
           <h2>Value</h2>
           <h2>-</h2>
         </TableTitleStyle>
-        <ProductListStyle>
+        <ul>
           {cartList.length>0? cartList.map((cartItem) => {
             return (
               <ProductListComponent
@@ -75,11 +70,11 @@ export default function CartPage() {
               ></ProductListComponent>
             );
           }): <p>You dont have Any Arts In your Cart</p>}
-        </ProductListStyle>
+        </ul>
       </TableStyle>
       {cartList.length>0? <TotalStyle>
         <p>{`Total:   ${calculateTotal().toFixed(2)}`}</p>
-        <ButtonBuyComponent></ButtonBuyComponent>
+        <PaymentComponent totalValue={calculateTotal().toFixed(2)}></PaymentComponent>
       </TotalStyle>
       :
       ''}
@@ -102,7 +97,7 @@ const Container = styled.div`
 
 const CartIcon = styled(BsCart4)`
   color: white;
-  font-size: 100px;
+  font-size: 60px;
   margin: 10px 0px;
 `;
 
@@ -125,8 +120,6 @@ const TableTitleStyle = styled.div`
   margin: 25px 0px;
   border-bottom: solid 3px;
 `;
-
-const ProductListStyle = styled.ul``;
 
 const TotalStyle = styled.div`
   margin-top: 100px;
