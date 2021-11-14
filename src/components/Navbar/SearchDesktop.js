@@ -13,16 +13,19 @@ export default function SearchDesktop() {
     function searchRequire(){    
 
         if(search !== ""){
-            console.log(search)
             getRequisition(search)
             .then((res) => {    
-                setFound(res.data)                               
+                setFound(res.data)                          
             }) 
             .catch((res) => {     
             alert("Problemas no servidor")                                
             });
         }                               
     } 
+
+    function clean(){        
+        setSearch("")
+    }
         
     return (
         <>
@@ -38,11 +41,11 @@ export default function SearchDesktop() {
                 onInput={searchRequire()}/>
                 <Icon />                 
                 </RelativeStyled>
-                <BlockStyled >
+                <BlockStyled onClick={clean}>
                    {found && search !== ""  ? 
                         (found.map((gallery) => {
                             return(
-                                <Link to={`/gallery}`} style={{textDecoration: 'none'}}> 
+                                <Link to={`/gallery/${gallery.id}`} style={{textDecoration: 'none'}}> 
                                     <ResultsStyled>
                                         <GalleryNameStyled> {gallery.galery_name} </GalleryNameStyled>                                       
                                     </ResultsStyled>

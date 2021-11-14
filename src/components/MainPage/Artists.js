@@ -10,8 +10,7 @@ export default function Artists() {
     useEffect(() => {
         getArtists()
         .then((res) => {    
-            setArtistsFound(res.data) 
-            console.log(res.data)                              
+            setArtistsFound(res.data)                             
         }) 
         .catch((error) => {     
             console.log(error)                                
@@ -57,6 +56,7 @@ const AllArtists = styled.div`
     background: #E5E5E5;
     margin-bottom:50px;
     margin-left: 40px;
+    border-radius: 8px;    
     display: flex;
     align-items: center;
     overflow-x: scroll;
@@ -90,11 +90,13 @@ const OneArtist = styled.div`
     align-items: center;
     justify-content: space-around;
     flex-shrink: 0;
+    
     img{
         width: 50px;
         height: 50px;
         border-radius: 50px;
         margin-top: 5px;
+        margin-right: 5px;
     }
 `;
 
