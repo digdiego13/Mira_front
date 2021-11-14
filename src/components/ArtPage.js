@@ -17,7 +17,7 @@ export default function ArtPage() {
         .catch((error) => {     
             console.log(error)                                
         });                       
-    } , []);
+    }, []);
 
 
     return (  
