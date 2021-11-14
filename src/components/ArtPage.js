@@ -26,7 +26,7 @@ export default function ArtPage() {
                     (artFound.map((art) => {
                         return (
                             <>
-                                <TitleBox>
+                                <TitleBox key={art.id}>
                                     <h1> Galeria: {art.galery_name}</h1> 
                                     <div></div>
                                     <h2> {art.art_name}</h2>

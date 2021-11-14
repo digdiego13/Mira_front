@@ -42,7 +42,7 @@ export default function Quantity() {
                     (artFound.map((art) => {
                         return (
                             <>
-                                <Box>
+                                <Box key={art.id}>
                                     <h1>Quantidade: </h1> 
                                     <button onClick={() => incrementQuantity() } className="plus">+</button>
                                     <p>{cont}</p>

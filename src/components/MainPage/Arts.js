@@ -24,7 +24,7 @@ export default function Arts() {
                 {artsFound !== "" ?
                     (artsFound.map((art) => {
                         return (                            
-                            <Link to={`/art/${art.id}`} style={{ textDecoration: 'none' }}>
+                            <Link key={art.id} to={`/art/${art.id}`} style={{ textDecoration: 'none' }}>
                                 <OneArt> 
                                     <img src = {art.art_photo} alt = "imagem de uma obra de arte" />
                                     <p> {art.art_name} </p>

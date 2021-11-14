@@ -6,8 +6,6 @@ import { useEffect, useState } from 'react';
 export default function GalleryPage() {
   const { idGallery } = useParams();
 
-	console.log(idGallery);
-
     const [galleryFound, setGalleryFound] = useState("")
 
     useEffect(() => {
@@ -43,9 +41,9 @@ export default function GalleryPage() {
         <ArtistsBox>
           <p>Artistas presentes nesta galeria:</p>
           {galleryFound !== "" ?
-            (galleryFound.map((gallery) => {
+            (galleryFound.map((gallery, index) => {
               return(
-                <div>
+                <div key={index}>
                   <img src={gallery.artistPhoto} alt="foto de um artista" />
                   <h1>{gallery.artist_name}</h1>
                 </div>
@@ -60,9 +58,9 @@ export default function GalleryPage() {
       <p>Artes disponíveis</p>
         <ArtsBox>
         {galleryFound !== "" ?
-            (galleryFound.map((gallery) => {   
+            (galleryFound.map((gallery, index) => {   
               return(
-                <Link to={`/art/${gallery.idStock}`} style={{ textDecoration: 'none' }}>
+                <Link key={index} to={`/art/${gallery.idStock}`} style={{ textDecoration: 'none' }}>
                   <OneArt> 
                       <img src ={gallery.art_photo}alt = "imagem de uma obra de arte" />
                       <h1> {gallery.art_name} </h1>

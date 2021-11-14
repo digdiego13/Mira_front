@@ -24,7 +24,7 @@ export default function Galleries() {
                 {galleriesFound !== "" ?
                     (galleriesFound.map((gallery) => {
                         return (                            
-                            <Link to={`/gallery/${gallery.id}`} style={{ textDecoration: 'none' }}>
+                            <Link key={gallery.id} to={`/gallery/${gallery.id}`} style={{ textDecoration: 'none' }}>
                                 <OneGallery> {gallery.galery_name} </OneGallery>
                             </Link>                            
                         )
