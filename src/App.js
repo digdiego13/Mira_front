@@ -10,6 +10,7 @@ import CheckoutPage from "./components/CheckoutPage";
 import GalleryPage from "./components/GalleryPage";
 import SignInPage from "./components/SignInPage";
 import SignUpPage from "./components/SignUpPage";
+import Footer from "./components/Footer";
 import Navbar from "./components/Navbar/Navbar"
 
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="/" exact>
             <MainPage />
             <Navbar />
+            <Footer />
           </Route>
 
           <Route path="/sign-up" exact>
@@ -44,21 +46,25 @@ function App() {
           <Route path="/gallery" exact>
             <GalleryPage />
             <Navbar />
+            <Footer />
           </Route>
 
           <Route path="/art" exact>
             <ArtPage />
             <Navbar />
+            <Footer />
           </Route>
 
           <Route path="/cart" exact>
             <CartPage />
             <Navbar />
+            <Footer />
           </Route>
 
           <Route path="/checkout" exact>
             <CheckoutPage />
             <Navbar />
+            <Footer />
           </Route>
         </Switch>
       </BrowserRouter>
