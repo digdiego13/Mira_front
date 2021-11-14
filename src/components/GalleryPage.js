@@ -16,7 +16,7 @@ export default function GalleryPage() {
         .catch((error) => {     
             console.log(error)                                
         });                       
-    }, []);
+    }, [idGallery]);
 
 
   return (

@@ -19,7 +19,7 @@ export default function Quantity() {
         .catch((error) => {     
             console.log(error)                                
         });                       
-    } , []);
+    } , [idArt]);
 
 
     function incrementQuantity(){
