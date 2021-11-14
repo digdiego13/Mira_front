@@ -18,10 +18,9 @@ export default function CartAdd(props) {
     function verifyLoginAndPostCart(){
 
         if(user !== ""){
-            console.log(body)
             postCart(body)
             .then((res) => {    
-                history.push("/cart");                            
+                alert("art added to cart")                           
             }) 
             .catch((error) => {     
                 console.log(error)                                

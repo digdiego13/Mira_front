@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 import { getOneArt } from '../service';
 import Quantity from './Quantity';
 import CartAdd from './CartAdd';
@@ -12,8 +12,7 @@ export default function ArtPage() {
     useEffect(() => {
         getOneArt(idArt)
         .then((res) => {    
-            setArtFound(res.data) 
-            console.log(res.data)                              
+            setArtFound(res.data)                       
         }) 
         .catch((error) => {     
             console.log(error)                                

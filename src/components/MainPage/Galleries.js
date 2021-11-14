@@ -10,8 +10,7 @@ export default function Galleries() {
     useEffect(() => {
         getGalleries()
         .then((res) => {    
-            setGalleriesFound(res.data) 
-            console.log(res.data)                              
+            setGalleriesFound(res.data)                             
         }) 
         .catch((error) => {     
             console.log(error)                                

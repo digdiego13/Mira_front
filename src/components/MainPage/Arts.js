@@ -10,8 +10,7 @@ export default function Arts() {
     useEffect(() => {
         getArts()
         .then((res) => {    
-            setArtsFound(res.data) 
-            console.log(res.data)                              
+            setArtsFound(res.data)                             
         }) 
         .catch((error) => {     
             console.log(error)                                

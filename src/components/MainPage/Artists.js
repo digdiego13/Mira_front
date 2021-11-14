@@ -10,8 +10,7 @@ export default function Artists() {
     useEffect(() => {
         getArtists()
         .then((res) => {    
-            setArtistsFound(res.data) 
-            console.log(res.data)                              
+            setArtistsFound(res.data)                             
         }) 
         .catch((error) => {     
             console.log(error)                                

@@ -1,11 +1,25 @@
 import { useParams,Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { getOneGallery } from '../service';
+import { useEffect, useState } from 'react';
 
 export default function GalleryPage() {
   const { idGallery } = useParams();
 
 	console.log(idGallery);
+
+    const [galleryFound, setGalleryFound] = useState("")
+
+    useEffect(() => {
+      getOneGallery(idGallery)
+        .then((res) => {    
+          setGalleryFound(res.data)                         
+        }) 
+        .catch((error) => {     
+            console.log(error)                                
+        });                       
+    } , []);
+
 
   return (
 
@@ -13,38 +27,61 @@ export default function GalleryPage() {
 
       <TopBox>
         <GalleryBox>
-          <h1>Nome da galeria</h1>
-          <h2>Descrição: galeria muito reconhecida mundialmente, fundada em 1924, representa muito da arte popular brasileira.</h2>
-          <h3>
-            Endereço da galeria: <br/>
-            Contato da galeria:           
-          </h3>
+          {galleryFound !== "" ?
+            <>
+              <h1>{galleryFound[0].galery_name}</h1>
+              <h2>Descrição: {galleryFound[0].description}</h2>
+              <h3>
+                Endereço da galeria: {galleryFound[0].adress} <br/>
+                Contato da galeria: {galleryFound[0].phone_number}          
+              </h3>
+            </>
+          :
+          ""
+          }
         </GalleryBox>
-
         <ArtistsBox>
-          <div>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRObGU4c1ZjiLmciF-SQstTqzT8Q7_WebqV_w&usqp=CAU" alt="foto de um artista" />
-            <h1>jose</h1>
-          </div>
+          <p>Artistas presentes nesta galeria:</p>
+          {galleryFound !== "" ?
+            (galleryFound.map((gallery) => {
+              return(
+                <div>
+                  <img src={gallery.artistPhoto} alt="foto de um artista" />
+                  <h1>{gallery.artist_name}</h1>
+                </div>
+              )
+            }))
+          :
+          ""
+          }
         </ArtistsBox>
       </TopBox>
-      
       <BottomBox>
       <p>Artes disponíveis</p>
         <ArtsBox>
-          <Link to={`/art/`} style={{ textDecoration: 'none' }}>
-              <OneArt> 
-                  <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRObGU4c1ZjiLmciF-SQstTqzT8Q7_WebqV_w&usqp=CAU" alt = "imagem de uma obra de arte" />
-                  <h1> nome da arte </h1>
-                  <div> R$ 1000,00 </div>
-                  <button> mais detalhes </button>
-              </OneArt>
-          </Link>          
-          </ArtsBox>
+        {galleryFound !== "" ?
+            (galleryFound.map((gallery) => {   
+              return(
+                <Link to={`/art/${gallery.idStock}`} style={{ textDecoration: 'none' }}>
+                  <OneArt> 
+                      <img src ={gallery.art_photo}alt = "imagem de uma obra de arte" />
+                      <h1> {gallery.art_name} </h1>
+                      <div> R$ {gallery.price},00 </div>
+                      <button> mais detalhes </button>
+                  </OneArt>
+              </Link> 
+              )       
+        }))
+      :
+      ""
+      } 
+        </ArtsBox>
       </BottomBox>      
     </AllGalleryPage>
   )
 }
+
+
 
 const GalleryBox = styled.div`
   background: #E5E5E5;
@@ -85,7 +122,7 @@ const ArtistsBox = styled.div`
     justify-content: space-evenly;
     align-items: center;
     margin-top: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 30px;
   }
   img{
     width: 150px;
@@ -96,7 +133,12 @@ const ArtistsBox = styled.div`
     width: 200px;
     height: 40px;
     color: #000000;
-
+  }
+  p{
+    width: 400px;
+    height: 40px;
+    margin: 20px 0 10px 50px;
+    color: #000000;
   }
   overflow-y: scroll;
    
@@ -211,5 +253,3 @@ const AllGalleryPage = styled.div`
     margin: 0 auto;
     margin-top: 100px;
 `;
-
-
