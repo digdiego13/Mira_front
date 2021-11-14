@@ -47,6 +47,7 @@ function getOneGallery(param) {
 function getOneArt(param) {
   const promise = axios.get(`${URL}/art/${param}`);
   return promise;
+}
   
 function getCartList(token) {
   const promise = axios.get(`${URL}/cart`, createHeaders(token));
@@ -74,17 +75,17 @@ function checkStock(token) {
 }
 
 export {
-    postLogin,
-    postSignUp,
-    getRequisition,
-    getArtists,
-    getArts,
-    getGalleries,
-    getOneGallery,
-    getOneArt,
-    postCart,
-    getCartList,
-    postCancelItem,
-    getCheckoutList,
-    checkStock,
+  postLogin,
+  postSignUp,
+  getRequisition,
+  getArtists,
+  getArts,
+  getGalleries,
+  getOneGallery,
+  getOneArt,
+  postCart,
+  getCartList,
+  postCancelItem,
+  getCheckoutList,
+  checkStock,
 }
