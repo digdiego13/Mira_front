@@ -5,10 +5,6 @@ const createHeaders = (token) => {
   return { headers: { Authorization: `Bearer ${token}` } };
 };
 
-// const createHeaders = (token) => {
-//   return { headers: { Authorization: `Bearer ${token}` } };
-// };
-
 function postLogin(body) {
     const promise = axios.post(`${URL}/sign-in`, body);
     return promise;
@@ -74,6 +70,11 @@ function checkStock(token) {
   return promise;
 }
 
+function postLogout(token) {
+  const promise = axios.post(`${URL}/logout`,{}, createHeaders(token));
+  return promise
+}
+
 export {
   postLogin,
   postSignUp,
@@ -88,4 +89,5 @@ export {
   postCancelItem,
   getCheckoutList,
   checkStock,
+  postLogout
 }

@@ -1,22 +1,39 @@
 import styled from 'styled-components';
 import SearchDesktop from './SearchDesktop'
 import { Link, useHistory } from "react-router-dom";
-import { AiOutlineLogout } from 'react-icons/ai';
+import { AiOutlineLogout, AiOutlineLogin } from 'react-icons/ai';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { useContext } from 'react';
+import UserContext from '../../contexts/UserContext';
+import { postLogout } from '../../service';
 
 
 export default function Navbar() {
+
+    const {user, setUser} = useContext(UserContext);
     
     const history = useHistory();
 
-    function logoutRedirect(){      
+    function loginRedirect(){      
             history.push("/sign-in")           
+    }
+
+    function logoutRedirect(){
+
+        postLogout(user.token)
+        .then((res) => {
+            localStorage.clear();
+            setUser([]);
+            window.location.reload();
+        })
+        .catch(err => {
+            alert(err.response.status);
+        })
     }
 
     function cartRedirect(){      
             history.push("/cart")           
     }
-
     return (
         <> 
             <HeaderStyled >  
@@ -28,7 +45,8 @@ export default function Navbar() {
                 <SearchDesktop/>
                 <RightHeaderStyled>                                           
                     <CartIcon onClick={cartRedirect} />
-                    <LogoutIcon onClick={logoutRedirect} />                  
+                    {user? <LogoutIcon onClick={logoutRedirect} /> : <LoginIcon onClick={loginRedirect} /> }
+                                      
                 </RightHeaderStyled>
             </ HeaderStyled >   
         </>  
@@ -97,3 +115,17 @@ const RightHeaderStyled = styled.header`
     align-items: center;  
 `;
 
+const LoginIcon = styled(AiOutlineLogin)`
+    color: #000000;    
+    width: 35px;
+    height: 45px;
+    padding: 0 10px 0 10px;
+    background: #E5E5E5;
+    border-color: #FFFFFF;
+    border-radius: 8px;
+    outline: 0;
+    font-family: Lato;
+    font-size: 19px;
+    cursor: pointer;
+    margin-right: 10px;
+`;
