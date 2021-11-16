@@ -19,7 +19,8 @@ export default function Quantity() {
         }) 
         .catch((error) => {     
             console.log(error)                                
-        });                       
+        }); 
+        // eslint-disable-next-line react-hooks/exhaustive-deps                      
     } , [idArt]);
 
 
