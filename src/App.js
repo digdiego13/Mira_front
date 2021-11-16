@@ -4,13 +4,13 @@ import UserContext from "./contexts/UserContext";
 import QuantityContext from "./contexts/QuantityContext";
 import { useState } from 'react';
 import MainPage from './components/MainPage/MainPage';
-import ArtistPage from "./components/ArtistPage";
 import ArtPage from "./components/ArtPage";
 import CartPage from "./components/CartPage";
 import CheckoutPage from "./components/CheckoutPage";
 import GalleryPage from "./components/GalleryPage";
 import SignInPage from "./components/SignInPage";
 import SignUpPage from "./components/SignUpPage";
+import Footer from "./components/Footer";
 import Navbar from "./components/Navbar/Navbar"
 
 function App() {
@@ -28,6 +28,7 @@ function App() {
           <Route path="/" exact>
             <MainPage />
             <Navbar />
+            <Footer />
           </Route>
 
           <Route path="/sign-up" exact>
@@ -36,11 +37,6 @@ function App() {
 
           <Route path="/sign-in" exact>
             <SignInPage />
-          </Route>
-
-          <Route path="/artist" exact>
-            <ArtistPage />
-            <Navbar />
           </Route>
 
           <Route path="/gallery/:idGallery" exact>
