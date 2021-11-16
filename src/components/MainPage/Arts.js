@@ -20,24 +20,26 @@ export default function Arts() {
     return (
         <>
             <TitleStyled>Para comprar ou saber mais, escolha uma arte:</TitleStyled>
-            <AllArtists>
+            <AllArts>
                 {artsFound !== "" ?
                     (artsFound.map((art) => {
                         return (                            
-                            <Link key={art.id} to={`/art/${art.id}`} style={{ textDecoration: 'none' }}>
+                            
                                 <OneArt> 
                                     <img src = {art.art_photo} alt = "imagem de uma obra de arte" />
                                     <p> {art.art_name} </p>
-                                    <div> R$ {art.price},00 </div>
+                                    {art.quantity > 0? <div> R$ {art.price},00 </div> : <div> Produto Indisponível </div>}
+                                    <Link key={art.id} to={`/art/${art.id}`} style={{ textDecoration: 'none' }}>
                                     <button> mais detalhes </button>
+                                    </Link>  
                                 </OneArt>
-                            </Link>                            
+                                                      
                         )
                     }))
                     :
                     ""
                 }
-            </AllArtists>
+            </AllArts>
         </>
     )
 }
@@ -49,17 +51,15 @@ const TitleStyled = styled.div`
 `;
 
 
-const AllArtists = styled.div`
-    height: 300px;
+const AllArts = styled.div`
+    height: 1000px;
     background: #E5E5E5;
-    margin: 10px 0 50px 40px;
+    margin: 10px 40px 50px 40px;
     border-radius: 8px;    
     display: flex;
-    align-items: center;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
-    cursor: auto;
     overflow-y: scroll;
    
     &::-webkit-scrollbar {
@@ -81,8 +81,8 @@ const AllArtists = styled.div`
 const OneArt = styled.div`
     background-color: #000000;
     font-size: 15px;
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 300px;
     margin: 20px 40px;
     border-radius: 10px;
     color: #DB6D71;
@@ -92,16 +92,18 @@ const OneArt = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    cursor: auto;
+    
+    box-shadow: 2px 2px 10px 4px gray;
     img{
-        width: 120px;
-        height: 120px;
+        width: 180px;
+        height: 180px;
         border-radius: 5px;
+        margin-bottom: 10px;
     }
     div{
         color: #E5E5E5;
         width: 100px;
-        height: 10px;
+       
         background-color: #000000;
         margin-top: 5px;
         font-size: 12px;
@@ -119,8 +121,9 @@ const OneArt = styled.div`
         cursor: pointer;
     }
     p{
+        font-size: 20px;    
         height: 15px;
-        margin-top: 5px;
+        margin-bottom: 5px;
     }
 `;
 

@@ -39,10 +39,9 @@ export default function ArtPage() {
                                     <p>{art.size} cm</p>    
                                     <div></div>  
                                     <p>Peças disponíveis: {art.quantity}</p> 
-                                    <div></div>                              
-                                    <Quantity/>
                                     <div></div>
-                                    <CartAdd id={idArt} />
+                                    {art.quantity>0 ? <> <Quantity/> <div></div> <CartAdd id={idArt} disabled={false} /></>: <CartAdd id={idArt} disabled={true} />}                              
+                                    
                                 </DescriptionBox>
                                 </BodyBox>        
                                 <ArtistBox>

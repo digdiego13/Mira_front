@@ -18,7 +18,7 @@ export default function Galleries() {
     } , []);
 
     return (
-        <>
+        <Container>
             <TitleStyled>Galerias que você irá encontrar</TitleStyled>
             <AllGalleries>
                 {galleriesFound !== "" ?
@@ -33,7 +33,7 @@ export default function Galleries() {
                     ""
                 }                
             </AllGalleries>
-        </>
+        </Container>
     )
 }
 
@@ -48,8 +48,7 @@ const TitleStyled = styled.div`
 const AllGalleries = styled.div`
     height: 130px;
     background: #E5E5E5;
-    margin-bottom:50px;
-    margin-left: 40px;
+    margin: 0px 40px 50px 40px;
     border-radius: 8px;    
     display: flex;
     align-items: center;
@@ -83,3 +82,7 @@ const OneGallery = styled.p`
     text-align: center;
     flex-shrink: 0;
 `;
+
+const Container = styled.div`
+    margin-bottom: 100px;
+`

@@ -32,11 +32,11 @@ export default function ProductListComponent({cartItem, loadCartList}) {
       </div>
       <ValueStyle>
           <QuantityStyle>{`Qtd :  ${cartItem.carrier_quantity}x`}</QuantityStyle>
-          <QuantityStyle>{`Price :  ${cartItem.price}`}</QuantityStyle>
+          <QuantityStyle>{`Preço :  ${cartItem.price}`}</QuantityStyle>
           <p>{`$ ${Number(cartItem.price * cartItem.carrier_quantity).toFixed(2)}`}</p>
       </ValueStyle>
       <CancelButton onClick={cancelItem}>
-          Cancel
+          Cancelar
       </CancelButton>
     </ProductList>
   );

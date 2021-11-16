@@ -47,16 +47,16 @@ export default function ButtonBuyComponent({disabled}) {
 
   return (
     <>
-      <CheckoutStyle onClick={() => setModalIsOpen(true)} disabled={disabled}>Buy! </CheckoutStyle>
+      <CheckoutStyle onClick={() => setModalIsOpen(true)} disabled={disabled}>Comprar! </CheckoutStyle>
       <ModalQueryStyle
         isOpen={modalIsOpen}
         style={modalStyle}
         ariaHideApp={false}
       >
         {outOfStock ? (
-          <h1>Unfotunatelly, we dont have all these arts on stock</h1>
+          <h1>Infelizmente, não temos todas essas artes no stock !</h1>
         ) : (
-          <h1>Congrats, you just bought wonderful arts!</h1>
+          <h1>Compra finalizada com sucesso !</h1>
         )}
         <TableStyle>
           {checkoutList.map((checkoutItem) => {
@@ -71,7 +71,7 @@ export default function ButtonBuyComponent({disabled}) {
                 </div>
                 <ValueStyle>
                   <QuantityStyle>{`Qtd :  ${checkoutItem.carrier_quantity}x`}</QuantityStyle>
-                  <QuantityStyle>{`Price :  ${checkoutItem.price}`}</QuantityStyle>
+                  <QuantityStyle>{`Preço :  ${checkoutItem.price}`}</QuantityStyle>
                   <p>{`$ ${Number(
                     checkoutItem.price * checkoutItem.carrier_quantity
                   ).toFixed(2)}`}</p>
@@ -82,7 +82,7 @@ export default function ButtonBuyComponent({disabled}) {
         </TableStyle>
         <TotalAndBackStyle>
           <p>{`Total: ${calculateTotal().toFixed(2)}`}</p>
-          <BackButtonComponent text={"Back to Mira"}></BackButtonComponent>
+          <BackButtonComponent text={"Retornar ao Mira"}></BackButtonComponent>
         </TotalAndBackStyle>
       </ModalQueryStyle>
     </>

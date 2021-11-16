@@ -1,6 +1,7 @@
 import axios from "axios";
-const URL = "http://localhost:4001";
+const URL = "https://mirabackend.herokuapp.com";
 //https://mirabackend.herokuapp.com
+//http://localhost:4001
 const createHeaders = (token) => {
   return { headers: { Authorization: `Bearer ${token}` } };
 };

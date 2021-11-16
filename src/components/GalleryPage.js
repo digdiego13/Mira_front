@@ -25,7 +25,7 @@ export default function GalleryPage() {
 
       <TopBox>
         <GalleryBox>
-          {galleryFound !== "" ?
+          {galleryFound?
             <>
               <h1>{galleryFound[0].galery_name}</h1>
               <h2>Descrição: {galleryFound[0].description}</h2>
@@ -40,7 +40,7 @@ export default function GalleryPage() {
         </GalleryBox>
         <ArtistsBox>
           <p>Artistas presentes nesta galeria:</p>
-          {galleryFound !== "" ?
+          {galleryFound?
             (galleryFound.map((gallery, index) => {
               return(
                 <div key={index}>
@@ -57,14 +57,14 @@ export default function GalleryPage() {
       <BottomBox>
       <p>Artes disponíveis</p>
         <ArtsBox>
-        {galleryFound !== "" ?
+        {galleryFound?
             (galleryFound.map((gallery, index) => {   
               return(
                 <Link key={index} to={`/art/${gallery.idStock}`} style={{ textDecoration: 'none' }}>
                   <OneArt> 
                       <img src ={gallery.art_photo}alt = "imagem de uma obra de arte" />
                       <h1> {gallery.art_name} </h1>
-                      <div> R$ {gallery.price},00 </div>
+                      {gallery.quantity > 0? <div> R$ {gallery.price},00 </div> : <div> Produto Indisponível </div>}
                       <button> mais detalhes </button>
                   </OneArt>
               </Link> 
@@ -163,6 +163,7 @@ const ArtsBox = styled.div`
   border-radius: 8px;
   display: flex;
   overflow-x: scroll;
+  
    
     &::-webkit-scrollbar {
     width: 10px;
@@ -199,6 +200,7 @@ const OneArt = styled.div`
     justify-content: center;
     align-items: center;
     cursor: auto;
+    box-shadow: 2px 2px 10px 4px gray;
     img{
         width: 120px;
         height: 120px;
@@ -206,7 +208,6 @@ const OneArt = styled.div`
     }
     div{
         color: #E5E5E5;
-        width: 100px;
         height: 10px;
         background-color: #000000;
         margin-top: 5px;

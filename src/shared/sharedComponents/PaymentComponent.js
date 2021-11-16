@@ -44,7 +44,7 @@ export default function PaymentComponent({ totalValue }) {
   return (
     <>
       <CheckoutStyle onClick={() => setModalIsOpen(true)}>
-        Payment{" "}
+        Pagamento{" "}
       </CheckoutStyle>
       <ModalQueryStyle
         isOpen={modalIsOpen}
@@ -53,22 +53,22 @@ export default function PaymentComponent({ totalValue }) {
       >
         {onStock ? (
           <>
-            <h1>Payment</h1>
+            <h1>Pagamento</h1>
             <MessageStyle>
-              <h2>Personal Information:</h2>
-              <p>{`Fullname: ${user.name}`}</p>
-              <p>{`Adress: ${user.adress}`}</p>
+              <h2>Informações pessoais:</h2>
+              <p>{`Nome completo: ${user.name}`}</p>
+              <p>{`Endereço: ${user.adress}`}</p>
             </MessageStyle>
             <MessageStyle>
-              <h2>Payment form:</h2>
-              <p>We only have the ticket option for payments.</p>
-              <p>Please, download the tickect and continue the payment !</p>
+              <h2>Forma de pagamento:</h2>
+              <p>Nós apenas aceitamos boleto como forma de pagamento.</p>
+              <p>Por favor, baixe o boleto e finalize o pagamento !</p>
               <TotalAndBackStyle>
                 <p>{`Total: ${totalValue}`}</p>
                 <a href={boleto} download="ticket">
                   <TicketStyle onClick={()=> setDisabled(false)}>
                     <BsFillArrowDownCircleFill></BsFillArrowDownCircleFill>
-                    <p>ticket!</p>
+                    <p>Boleto!</p>
                   </TicketStyle>
                 </a>
               </TotalAndBackStyle>
@@ -76,16 +76,16 @@ export default function PaymentComponent({ totalValue }) {
             </MessageStyle>
             <TotalAndBackStyle>
               <BackToCartStyle onClick={() => setModalIsOpen(false)}>
-                Back to cart
+                Voltar ao carrinho
               </BackToCartStyle>
             </TotalAndBackStyle>
           </>
         ) : (
           <>
-            <h1>Unfotunatelly, we dont have all these arts on stock</h1>
+            <h1>Infelizmente, Não temos todas essas artes no stock !</h1>
             <TotalAndBackStyle>
               <BackToCartStyle onClick={() => setModalIsOpen(false)}>
-                Back to cart
+                Voltar ao carrinho
               </BackToCartStyle>
             </TotalAndBackStyle>
           </>
