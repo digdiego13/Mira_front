@@ -35,7 +35,7 @@ export default function SearchDesktop() {
                 minLength={3}
                 debounceTimeout={300}
                 type="text" 
-                placeholder="Search for galleries . . ."
+                placeholder="Encontre Nossas Galerias . . ."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)} 
                 onInput={searchRequire()}/>

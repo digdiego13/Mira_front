@@ -10,28 +10,30 @@ export default function Quantity() {
     
     const [artFound, setArtFound] = useState("")
     const { cont, setCont } = useContext(QuantityContext);
-
+    
     useEffect(() => {
+        setCont(1);
         getOneArt(idArt)
         .then((res) => {    
             setArtFound(res.data)                          
         }) 
         .catch((error) => {     
             console.log(error)                                
-        });                       
+        }); 
+        // eslint-disable-next-line react-hooks/exhaustive-deps                      
     } , [idArt]);
 
 
     function incrementQuantity(){
         if(cont === artFound[0].quantity){
-            return alert("exceeds maximum available")
+            return alert("Excede a quantidade disponivel")
         }
         setCont(cont+1)
     }
 
     function decrementQuantity(){
         if(cont === 1){
-            return alert("you can't choose less than one item")
+            return alert("Escolha ao menos um item")
         }
         setCont(cont-1)
     }

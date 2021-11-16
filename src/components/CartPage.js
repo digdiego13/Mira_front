@@ -50,14 +50,14 @@ export default function CartPage() {
   return (
     <Container>
       <CartStyle>
-        <h1>Cart</h1>
+        <h1>Carrinho</h1>
         <CartIcon></CartIcon>
       </CartStyle>
       <TableStyle>
         <TableTitleStyle>
-          <h2>Products</h2>
-          <h2>Description</h2>
-          <h2>Value</h2>
+          <h2>Produtos</h2>
+          <h2>Descrição</h2>
+          <h2>Valor</h2>
           <h2>-</h2>
         </TableTitleStyle>
         <ul>
@@ -69,7 +69,7 @@ export default function CartPage() {
                 loadCartList={loadCartList}
               ></ProductListComponent>
             );
-          }): <p>You dont have Any Arts In your Cart</p>}
+          }): <p>Não há artes no Carrinho</p>}
         </ul>
       </TableStyle>
       {cartList.length>0? <TotalStyle>
@@ -80,7 +80,7 @@ export default function CartPage() {
       ''}
       
       <div>
-        <BackButtonComponent text={"Find more Arts!"}></BackButtonComponent>
+        <BackButtonComponent text={"Encontre mais artes"}></BackButtonComponent>
       </div>
     </Container>
   );

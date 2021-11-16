@@ -11,29 +11,30 @@ export default function CartAdd(props) {
     const stockId = parseInt(props.id);
     const { cont } = useContext(QuantityContext);
     const { user } = useContext(UserContext);
-    const userToken = user.token
-    const cart = 1;
-    const body = { userToken, cont, cart , stockId }
+    
 
     function verifyLoginAndPostCart(){
 
-        if(user !== ""){
+        if(user){
+            const userToken = user.token
+            const cart = 1;
+            const body = { userToken, cont, cart , stockId }
             postCart(body)
             .then((res) => {    
-                alert("art added to cart")                           
+                alert("Arte adicionada ao carrinho")                           
             }) 
             .catch((error) => {     
                 console.log(error)                                
             });             
         } else {
-            alert("you need to login first");
+            alert("Por favor, realizar Loggin");
             history.push("/sign-in");
         }
     }
 
     return (
         <>
-            <ButtonCart onClick={() => verifyLoginAndPostCart()}> Adicionar ao Carrinho </ButtonCart>
+            <ButtonCart onClick={() => verifyLoginAndPostCart()} disabled={props.disabled}> Adicionar ao Carrinho </ButtonCart>
         </>
     )
 }
