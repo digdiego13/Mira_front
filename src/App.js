@@ -18,7 +18,7 @@ function App() {
   const storedUser = JSON.parse(localStorage.getItem('storedUser'));
   const [user, setUser] = useState(storedUser);
   const [cont, setCont] = useState(1);  
-  
+  console.log(process.env.REACT_APP_API_URL);
   return (
     <UserContext.Provider value={{user, setUser}}>
     <QuantityContext.Provider value={{cont, setCont}}>
