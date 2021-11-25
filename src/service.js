@@ -1,5 +1,5 @@
 import axios from "axios";
-const URL = "https://mirabackend.herokuapp.com";
+const URL = process.env.REACT_APP_API_URL;
 //https://mirabackend.herokuapp.com
 //http://localhost:4001
 const createHeaders = (token) => {
