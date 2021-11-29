@@ -9,7 +9,7 @@ import {
   modalStyle,
 } from "../sharedStyles/sharedStyles";
 
-export default function ButtonBuyComponent({disabled}) {
+export default function ButtonBuyComponent({ disabled }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [checkoutList, setCheckoutList] = useState([1]);
   const { user } = useContext(UserContext);
@@ -47,7 +47,9 @@ export default function ButtonBuyComponent({disabled}) {
 
   return (
     <>
-      <CheckoutStyle onClick={() => setModalIsOpen(true)} disabled={disabled}>Comprar! </CheckoutStyle>
+      <CheckoutStyle onClick={() => setModalIsOpen(true)} disabled={disabled}>
+        Comprar!{" "}
+      </CheckoutStyle>
       <ModalQueryStyle
         isOpen={modalIsOpen}
         style={modalStyle}

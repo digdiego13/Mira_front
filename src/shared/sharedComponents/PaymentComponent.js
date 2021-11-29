@@ -66,7 +66,7 @@ export default function PaymentComponent({ totalValue }) {
               <TotalAndBackStyle>
                 <p>{`Total: ${totalValue}`}</p>
                 <a href={boleto} download="ticket">
-                  <TicketStyle onClick={()=> setDisabled(false)}>
+                  <TicketStyle onClick={() => setDisabled(false)}>
                     <BsFillArrowDownCircleFill></BsFillArrowDownCircleFill>
                     <p>Boleto!</p>
                   </TicketStyle>
