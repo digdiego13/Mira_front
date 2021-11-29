@@ -7,33 +7,33 @@ const createHeaders = (token) => {
 };
 
 function postLogin(body) {
-    const promise = axios.post(`${URL}/sign-in`, body);
-    return promise;
+  const promise = axios.post(`${URL}/sign-in`, body);
+  return promise;
 }
-  
+
 function postSignUp(body) {
-const promise = axios.post(`${URL}/sign-up`, body);
-return promise;
+  const promise = axios.post(`${URL}/sign-up`, body);
+  return promise;
 }
 
 function getArts() {
-  const promise = axios.get(`${URL}/stock`)  
-  return promise
+  const promise = axios.get(`${URL}/stock`);
+  return promise;
 }
 
 function getGalleries() {
-  const promise = axios.get(`${URL}/galeries`)  
-  return promise
+  const promise = axios.get(`${URL}/galeries`);
+  return promise;
 }
 
 function getArtists() {
-  const promise = axios.get(`${URL}/artists`)  
-  return promise
+  const promise = axios.get(`${URL}/artists`);
+  return promise;
 }
 
 function getRequisition(search) {
-    const promise = axios.get(`${URL}/galeries?galery_name=${search}`)  
-    return promise
+  const promise = axios.get(`${URL}/galeries?galery_name=${search}`);
+  return promise;
 }
 
 function getOneGallery(param) {
@@ -45,7 +45,7 @@ function getOneArt(param) {
   const promise = axios.get(`${URL}/art/${param}`);
   return promise;
 }
-  
+
 function getCartList(token) {
   const promise = axios.get(`${URL}/cart`, createHeaders(token));
   return promise;
@@ -72,8 +72,8 @@ function checkStock(token) {
 }
 
 function postLogout(token) {
-  const promise = axios.post(`${URL}/logout`,{}, createHeaders(token));
-  return promise
+  const promise = axios.post(`${URL}/logout`, {}, createHeaders(token));
+  return promise;
 }
 
 export {
@@ -90,5 +90,5 @@ export {
   postCancelItem,
   getCheckoutList,
   checkStock,
-  postLogout
-}
+  postLogout,
+};

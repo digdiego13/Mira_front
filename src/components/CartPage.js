@@ -14,10 +14,10 @@ export default function CartPage() {
   const history = useHistory();
 
   function loadCartList() {
-    if(!user) {
+    if (!user) {
       alert("Please, Log-in to acess cart");
       history.push("/sign-in");
-      return '';
+      return "";
     }
     getCartList(user.token)
       .then((res) => {
@@ -26,12 +26,11 @@ export default function CartPage() {
       .catch((err) => {
         alert(err.response.data);
         history.push("/");
-       
       });
   }
   useEffect(() => {
     loadCartList();
-     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (cartList[0] === 1) {
@@ -61,24 +60,32 @@ export default function CartPage() {
           <h2>-</h2>
         </TableTitleStyle>
         <ul>
-          {cartList.length>0? cartList.map((cartItem) => {
-            return (
-              <ProductListComponent
-                key={cartItem.id}
-                cartItem={cartItem}
-                loadCartList={loadCartList}
-              ></ProductListComponent>
-            );
-          }): <p>Não há artes no Carrinho</p>}
+          {cartList.length > 0 ? (
+            cartList.map((cartItem) => {
+              return (
+                <ProductListComponent
+                  key={cartItem.id}
+                  cartItem={cartItem}
+                  loadCartList={loadCartList}
+                ></ProductListComponent>
+              );
+            })
+          ) : (
+            <p>Não há artes no Carrinho</p>
+          )}
         </ul>
       </TableStyle>
-      {cartList.length>0? <TotalStyle>
-        <p>{`Total:   ${calculateTotal().toFixed(2)}`}</p>
-        <PaymentComponent totalValue={calculateTotal().toFixed(2)}></PaymentComponent>
-      </TotalStyle>
-      :
-      ''}
-      
+      {cartList.length > 0 ? (
+        <TotalStyle>
+          <p>{`Total:   ${calculateTotal().toFixed(2)}`}</p>
+          <PaymentComponent
+            totalValue={calculateTotal().toFixed(2)}
+          ></PaymentComponent>
+        </TotalStyle>
+      ) : (
+        ""
+      )}
+
       <div>
         <BackButtonComponent text={"Encontre mais artes"}></BackButtonComponent>
       </div>
