@@ -7,6 +7,8 @@ Why dont you visit my application ? https://mira-front-brown.vercel.app/
 
 "Mira" is a project that brings together arts, artists and galleries in one place. There, you can access galleries from all over Brazil, view and buy their works.
 
+<img src="/public/mira.gif" />
+
 ## About
 in short, it is an art marketplace with the following features:
 
@@ -59,5 +61,13 @@ Use NPM start to use the application on your localhost
 ```sh
 npm start
 ```
-(you have to clone the Mira_backend repository too [https://github.com/angelicacavalheiro/Mira])
+(you have to clone the Mira_backend repository too [https://github.com/angelicacavalheiro/Mira] and statrt the dev application (read the "READ.ME" archive on backend repository)
 Or, you can see the deploy on https://mira-front-brown.vercel.app/
+
+## cypress tests
+
+if you  want to test E2E with cypress, run
+```sh
+npx cypress open
+```
+then there you can run "loginAndRegistration" and "navegationArt" tests.
